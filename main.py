@@ -5,11 +5,11 @@ import os
 import urllib
 
 host_server = os.environ.get('host_server', 'localhost')
-db_server_port = urllib.parse.quote_plus(str(os.environ.get('db_server_port', '5432')))
+db_server_port = str(os.environ.get('db_server_port', '5432'))
 database_name = os.environ.get('database_name', 'fastapi')
-db_username = urllib.parse.quote_plus(str(os.environ.get('db_username', 'postgres')))
-db_password = urllib.parse.quote_plus(str(os.environ.get('db_password', 'secret')))
-ssl_mode = urllib.parse.quote_plus(str(os.environ.get('ssl_mode','prefer')))
+db_username = str(os.environ.get('db_username', 'postgres'))
+db_password = str(os.environ.get('db_password', 'secret'))
+ssl_mode = str(os.environ.get('ssl_mode','prefer'))
 DATABASE_URL = 'postgresql://{}:{}@{}:{}/{}?sslmode={}'.format(db_username, db_password, host_server, db_server_port, database_name, ssl_mode)
 
 database = databases.Database(DATABASE_URL)
@@ -36,6 +36,7 @@ metadata.create_all(engine)
 
 @app.get("/home")
 def home():
+    print("")
     return {"message":"Hello World", "DB_URL": DATABASE_URL}
 
 
