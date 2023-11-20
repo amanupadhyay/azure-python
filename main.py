@@ -36,7 +36,7 @@ metadata.create_all(engine)
 
 @app.get("/home")
 def home():
-    return {"message":"Hello World"}
+    return {"message":"Hello World", "DB_URL": DATABASE_URL}
 
 
 @app.get("/insert-sample-data")
