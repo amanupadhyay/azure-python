@@ -7,7 +7,7 @@ app = fastapi.FastAPI()
 @app.get("/home")
 async def index():
     return {
-        "info": "This is a home page",
+        "info": "This is a home page !!!",
     }
 
 
